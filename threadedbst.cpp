@@ -1,23 +1,19 @@
 #include "threadedbst.h"
 
-void ThreadedBST::add(const int& x) {
+void ThreadedBST::add(const int &x) {}
 
-}
+bool ThreadedBST::remove(const int &x) { return false; }
 
-bool ThreadedBST::remove(const int& x) {
-  return false;
-}
+bool ThreadedBST::isEmpty() { return numNodes == 0; }
 
-bool ThreadedBST::isEmpty() {
-  return numNodes == 0;
-}
+bool ThreadedBST::contains(int &x) {
+  if (isEmpty())
+    return false;
 
-bool ThreadedBST::contains(int& x) {
-  if (isEmpty()) return false;
-
-  Node* cur = root;
+  Node *cur = root;
   while (cur != nullptr) {
-    if (cur->data == x) return true;
+    if (cur->data == x)
+      return true;
     if (cur->data > x) {
       cur = cur->left;
     } else {
@@ -43,13 +39,9 @@ bool ThreadedBST::contains(int& x) {
 //   }
 // }
 
-int ThreadedBST::getHeight() {
-  return height;
-}
+int ThreadedBST::getHeight() { return height; }
 
-int ThreadedBST::getNumberOfNodes() {
-  return numNodes;
-}
+int ThreadedBST::getNumberOfNodes() { return numNodes; }
 
 int ThreadedBST::getRootData() {
   if (root != nullptr) {
