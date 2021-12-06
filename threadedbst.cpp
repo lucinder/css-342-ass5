@@ -1,9 +1,10 @@
 #include "threadedbst.h"
 
-Node::Node(int data) : data(data), left(nullptr), right(nullptr), rthread(false) {}
+Node::Node(int data)
+    : data(data), left(nullptr), right(nullptr), rthread(false) {}
 
-Node* Node::leftMost() {
-  Node* cur = this;
+Node *Node::leftMost() {
+  Node *cur = this;
   while (cur->left != nullptr) {
     cur = cur->left;
   }
@@ -16,10 +17,11 @@ ThreadedBST::ThreadedBST(const ThreadedBST &other) {}
 
 ThreadedBST::~ThreadedBST() {}
 
-void printTree(ostream &out, const string prefix, const Node* node, bool isLeft) {
+void printTree(ostream &out, const string prefix, const Node *node,
+               bool isLeft) {
   if (node != nullptr) {
     cout << prefix;
-    cout << (isLeft ? "├──" : "└──" );
+    cout << (isLeft ? "├──" : "└──");
     cout << node->data << std::endl;
 
     // enter the next tree level - left and right branch
@@ -30,18 +32,18 @@ void printTree(ostream &out, const string prefix, const Node* node, bool isLeft)
   }
 }
 
-void printTree(ostream &out, const Node* node) {
+void printTree(ostream &out, const Node *node) {
   printTree(out, "", node, false);
 }
 
 ostream &operator<<(ostream &out, const ThreadedBST &rhs) {
-  if (rhs.isEmpty()) out << "NULL" << endl;
+  if (rhs.isEmpty())
+    out << "NULL" << endl;
 
   printTree(out, rhs.root);
 
   return out;
 }
-
 
 void ThreadedBST::add(const int &x) {
   Node *cur = root;
@@ -115,12 +117,11 @@ bool ThreadedBST::contains(const int &x) const {
   return false;
 }
 
-int ThreadedBST::getHeight() const {
-  return getHeightSubtree(root);
-}
+int ThreadedBST::getHeight() const { return getHeightSubtree(root); }
 
 int ThreadedBST::getHeightSubtree(const Node *node) const {
-  if (node == nullptr) return 0;
+  if (node == nullptr)
+    return 0;
 
   return max(getHeightSubtree(node->left), getHeightSubtree(node->right)) + 1;
 }
@@ -141,16 +142,7 @@ void ThreadedBST::inorderTraverse() const {
     return;
   }
 
-  // threaded in-order traversal
-  // Node *cur = this->threadHead;
-  // while (cur != nullptr) {
-  //   // operate on node
-  //   cout << cur->data << " ";
-
-  //   cur = cur->right;
-  // }
-
-  Node* cur = root->leftMost();
+  Node *cur = root->leftMost();
   while (cur != nullptr) {
     cout << cur->data << " ";
 

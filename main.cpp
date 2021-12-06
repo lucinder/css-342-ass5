@@ -1,9 +1,9 @@
+#include <algorithm>
 #include <iostream>
 #include <numeric>
-#include <vector>
-#include <algorithm>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
 #include "threadedbst.h"
 
