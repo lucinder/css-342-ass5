@@ -19,7 +19,7 @@ date
 echo
 echo "*** compiling with clang++ to create an executable called main"
 clang++ --version
-clang++ -std=c++11 -Wall -Wextra -Wno-sign-compare *.cpp -g -o main
+clang++ -std=c++11 -Wall -Wextra -Wno-sign-compare main.cpp threadedbst.cpp -g -o main
 
 # echo "*** running clang-tidy using options from .clang-tidy"
 clang-tidy --version
@@ -33,9 +33,9 @@ echo "*** running main"
 # echo "*** running with valgrind"
 # valgrind --leak-check=full ./main.exe
 
-echo
-echo "*** cleaning up, deleting main"
-rm main
+# echo
+# echo "*** cleaning up, deleting main"
+# rm main
 
 echo
 date
