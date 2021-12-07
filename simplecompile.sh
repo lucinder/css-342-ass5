@@ -21,7 +21,8 @@ echo "*** compiling with clang++ to create an executable called main"
 clang++ --version
 clang++ -std=c++11 -Wall -Wextra -Wno-sign-compare main.cpp threadedbst.cpp -g -o main
 
-# echo "*** running clang-tidy using options from .clang-tidy"
+echo
+echo "*** running clang-tidy using options from .clang-tidy"
 clang-tidy --version
 clang-tidy *.cpp -- -std=c++11
 
@@ -30,8 +31,9 @@ echo "*** running main"
 ./main
 
 # valgrind will detect memory leaks
-# echo "*** running with valgrind"
-# valgrind --leak-check=full ./main.exe
+echo
+echo "*** running with valgrind"
+valgrind --leak-check=full ./main > /dev/null
 
 # echo
 # echo "*** cleaning up, deleting main"
