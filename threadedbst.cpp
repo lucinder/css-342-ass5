@@ -13,7 +13,7 @@ Node *Node::leftMost() {
 
 ThreadedBST::ThreadedBST() : numNodes(0), root(nullptr), threadHead(nullptr) {}
 
-ThreadedBST::ThreadedBST(const ThreadedBST &other) {}
+ThreadedBST::ThreadedBST(const ThreadedBST &other) { addSubTree(other->head); }
 
 ThreadedBST::~ThreadedBST() {}
 
@@ -69,6 +69,8 @@ void ThreadedBST::add(const int &x) {
       }
     }
   }
+    
+    
 
   // -- Insert
   Node *newNode = new Node(x);
@@ -92,6 +94,13 @@ void ThreadedBST::add(const int &x) {
   }
 
   this->numNodes++;
+}
+
+void ThreadedBST::addSubTree(const Node& toAdd){
+    if(toAdd == nullptr){ return; } // cut method short if subtree head is empty
+    add(toAdd->data);
+    addSubTree(toAdd->left);
+    addSubTree(toAdd->right);
 }
 
 bool ThreadedBST::remove(const int &x) { return false; }
