@@ -52,6 +52,8 @@ class ThreadedBST {
 
     // Get data of root node
     int getRootData() const;
+    // Get a copy of the root node
+    Node* getRoot() const;
 
     // Use threads to traverse nodes in-order and call func on each
     // void inorderTraverse(void (*func)(int x)) const;
