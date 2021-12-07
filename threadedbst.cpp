@@ -13,7 +13,7 @@ Node *Node::leftMost() {
 
 ThreadedBST::ThreadedBST() : numNodes(0), root(nullptr), threadHead(nullptr) {}
 
-ThreadedBST::ThreadedBST(const ThreadedBST &other) { addSubTree(other->head); }
+ThreadedBST::ThreadedBST(const ThreadedBST &other) { addSubTree(other->getRoot()); }
 
 ThreadedBST::~ThreadedBST() {}
 
@@ -140,9 +140,16 @@ int ThreadedBST::getNumberOfNodes() const { return numNodes; }
 int ThreadedBST::getRootData() const {
   if (root != nullptr) {
     return root->data;
-  } else {
-    throw "Tree is empty. Can't fetch root data.";
   }
+  throw "Tree is empty. Can't fetch root data.";
+}
+
+Node* ThreadedBST::getRoot() const{
+    if(root != nullptr){
+      Node copy(root);
+      return *copy;  
+    }
+    throw "Tree is empty. Can't fetch root.";   
 }
 
 void ThreadedBST::inorderTraverse() const {
