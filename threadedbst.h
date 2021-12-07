@@ -9,6 +9,7 @@ using namespace std;
 class Node {
   public:
     Node(int data);
+    Node(Node* other): data(other->data), left(other->left), right(other->right){}
 
     Node* leftMost();
 
