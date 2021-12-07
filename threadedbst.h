@@ -64,6 +64,7 @@ class ThreadedBST {
     int numNodes;
     Node* root;
     Node* threadHead;
+    void addSubTree(const Node& toAdd);
 };
 
 #endif // THREADED_BST_H
